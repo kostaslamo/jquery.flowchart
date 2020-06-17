@@ -13,7 +13,7 @@
 
 	<!-- Flowchart CSS and JS -->
 	<link rel="stylesheet" href="jquery.flowchart.css">
-	<script src="jquery.flowchart.js"></script>
+	<script src="jquery.flowchart.min.js"></script>
 
 	<style>
 		.flowchart-example-container {
@@ -28,7 +28,8 @@
 
 <body>
 	<h1>Semi-minimalist usage sample</h1>
-	<h4>Sample created with basis on some from Sebastien Drouyer, original author's <a href="https://sebastien.drouyer.com/jquery.flowchart-demo/">website</a>.</h4>
+	<h4>Sample created with basis on some from Sebastien Drouyer, original author's <a
+			href="https://sebastien.drouyer.com/jquery.flowchart-demo/">website</a>.</h4>
 	<h4>Flowchart</h4>
 	<div id="chart_container">
 		<div class="flowchart-example-container" id="flowchartworkspace"></div>
@@ -37,15 +38,28 @@
 		<div class="draggable_operators_label">
 			Operators (drag and drop them in the flowchart):
 		</div>
-		<div class="draggable_operators_divs">
+		<!-- <div class="draggable_operators_divs">
 			<div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">1 input</div>
 			<div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="1">1 output</div>
 			<div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">1 input &amp; 1 output</div>
 			<div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="2">1 in &amp; 2 out</div>
 			<div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="1">2 in &amp; 1 out</div>
 			<div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="2">2 in &amp; 2 out</div>
+		</div> -->
+		<!-- <div class="draggable_operators_divs">
+			<div id="draggable-operator" class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">1 in &amp; 1 out
+			</div>
+		</div> -->
+		<div class="draggable_operators_divs">
+			<div id="draggable-operator" class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">
+				Operator
+			</div>
 		</div>
+
 	</div>
+	<input placeholder="Enter number of inputs" type="text" id="input-number" name="input-number">
+	<input placeholder="Enter number of outputs" type="text" id="output-number" name="output-number">
+	<button id="change-input-output-number">Change Operator</button>
 	<button class="create_operator">Create operator</button>
 	<button class="delete_selected_button">Delete selected operator / link</button>
 	<div id="operator_properties" style="display: block;">
@@ -63,7 +77,7 @@
 	</div>
 	<script type="text/javascript">
 		/* global $ */
-		$(document).ready(function() {
+		$(document).ready(function () {
 			var $flowchart = $('#flowchartworkspace');
 			var $container = $flowchart.parent();
 
@@ -76,6 +90,27 @@
 				multipleLinksOnInput: true,
 				multipleLinksOnOutput: true
 			});
+
+			// Click Handlers
+			$("#change-input-output-number").click(function (ev) {
+				ev.preventDefault();
+				const inputNumber = $("#input-number").val();
+				const outputNumber = $("#output-number").val();
+				console.log(`Input number: ${inputNumber}, output number: ${outputNumber}`);
+				$("#draggable-operator").attr("data-nb-inputs", inputNumber);
+				$("#draggable-operator").attr("data-nb-outputs", outputNumber);
+				$("div#draggable-operator").text(`${inputNumber} in & ${outputNumber} out`);
+			});
+
+			// On Key Change
+			// $("#input-number").on("change paste keyup", (ev) => {
+			// 	const inputNumber = $("#input-number").val();
+			// 	$("#draggable-operator").attr("data-nb-inputs", inputNumber);
+			// })
+			// $("#output-number").on("change paste keyup", (ev) => {
+			// 	const outputNumber = $("#output-number").val();
+			// 	$("#draggable-operator").attr("data-nb-outputs", outputNumber);
+			// })
 
 
 			function getOperatorData($element) {
@@ -117,34 +152,34 @@
 			var $linkColor = $('#link_color');
 
 			$flowchart.flowchart({
-				onOperatorSelect: function(operatorId) {
+				onOperatorSelect: function (operatorId) {
 					$operatorProperties.show();
 					$operatorTitle.val($flowchart.flowchart('getOperatorTitle', operatorId));
 					return true;
 				},
-				onOperatorUnselect: function() {
+				onOperatorUnselect: function () {
 					$operatorProperties.hide();
 					return true;
 				},
-				onLinkSelect: function(linkId) {
+				onLinkSelect: function (linkId) {
 					$linkProperties.show();
 					$linkColor.val($flowchart.flowchart('getLinkMainColor', linkId));
 					return true;
 				},
-				onLinkUnselect: function() {
+				onLinkUnselect: function () {
 					$linkProperties.hide();
 					return true;
 				}
 			});
 
-			$operatorTitle.keyup(function() {
+			$operatorTitle.keyup(function () {
 				var selectedOperatorId = $flowchart.flowchart('getSelectedOperatorId');
 				if (selectedOperatorId != null) {
 					$flowchart.flowchart('setOperatorTitle', selectedOperatorId, $operatorTitle.val());
 				}
 			});
 
-			$linkColor.change(function() {
+			$linkColor.change(function () {
 				var selectedLinkId = $flowchart.flowchart('getSelectedLinkId');
 				if (selectedLinkId != null) {
 					$flowchart.flowchart('setLinkMainColor', selectedLinkId, $linkColor.val());
@@ -157,7 +192,7 @@
 			//-----------------------------------------
 			//--- delete operator / link button
 			//--- start
-			$flowchart.parent().siblings('.delete_selected_button').click(function() {
+			$flowchart.parent().siblings('.delete_selected_button').click(function () {
 				$flowchart.flowchart('deleteSelected');
 			});
 			//--- end
@@ -170,7 +205,7 @@
 			//--- create operator button
 			//--- start
 			var operatorI = 0;
-			$flowchart.parent().siblings('.create_operator').click(function() {
+			$flowchart.parent().siblings('.create_operator').click(function () {
 				var operatorId = 'created_operator_' + operatorI;
 				var operatorData = {
 					top: ($flowchart.height() / 2) - 30,
@@ -215,12 +250,12 @@
 				appendTo: 'body',
 				zIndex: 1000,
 
-				helper: function(e) {
+				helper: function (e) {
 					var $this = $(this);
 					var data = getOperatorData($this);
 					return $flowchart.flowchart('getOperatorElement', data);
 				},
-				stop: function(e, ui) {
+				stop: function (e, ui) {
 					var $this = $(this);
 					var elOffset = ui.offset;
 					var containerOffset = $container.offset();
@@ -300,45 +335,45 @@
 		});
 
 		var defaultFlowchartData = {
-			operators: {
-				operator1: {
-					top: 20,
-					left: 20,
-					properties: {
-						title: 'Operator 1',
-						inputs: {},
-						outputs: {
-							output_1: {
-								label: 'Output 1',
-							}
-						}
-					}
-				},
-				operator2: {
-					top: 80,
-					left: 300,
-					properties: {
-						title: 'Operator 2',
-						inputs: {
-							input_1: {
-								label: 'Input 1',
-							},
-							input_2: {
-								label: 'Input 2',
-							},
-						},
-						outputs: {}
-					}
-				},
-			},
-			links: {
-				link_1: {
-					fromOperator: 'operator1',
-					fromConnector: 'output_1',
-					toOperator: 'operator2',
-					toConnector: 'input_2',
-				},
-			}
+			// operators: {
+			// 	operator1: {
+			// 		top: 20,
+			// 		left: 20,
+			// 		properties: {
+			// 			title: 'Operator 1',
+			// 			inputs: {},
+			// 			outputs: {
+			// 				output_1: {
+			// 					label: 'Output 1',
+			// 				}
+			// 			}
+			// 		}
+			// 	},
+			// 	operator2: {
+			// 		top: 80,
+			// 		left: 300,
+			// 		properties: {
+			// 			title: 'Operator 2',
+			// 			inputs: {
+			// 				input_1: {
+			// 					label: 'Input 1',
+			// 				},
+			// 				input_2: {
+			// 					label: 'Input 2',
+			// 				},
+			// 			},
+			// 			outputs: {}
+			// 		}
+			// 	},
+			// },
+			// links: {
+			// 	link_1: {
+			// 		fromOperator: 'operator1',
+			// 		fromConnector: 'output_1',
+			// 		toOperator: 'operator2',
+			// 		toConnector: 'input_2',
+			// 	},
+			// }
 		};
 		if (false) console.log('remove lint unused warning', defaultFlowchartData);
 	</script>

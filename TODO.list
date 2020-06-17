@@ -1,0 +1,4 @@
+- Create a <div id="operators-list"></div>
+- Create a form that will have the number of Operator Inputs, the number of Operator Outputs, the name of the operator and the name(s) of the Input(s)/Output(s)
+- Create an addd button to add the new Operator inside the operators-list
+- Then Drag&Drop the operators inside the container
