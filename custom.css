@@ -1,0 +1,50 @@
+#flowchartworkspace {
+  width: 2000px;
+  height: 2000px;
+  background: white;
+}
+
+#new-operator-container {
+  width: 600px;
+  margin: 24px 0px;
+}
+
+.custom-operator-inputs {
+  display: inline-block;
+  width: 200px;
+}
+
+.custom-operator-outputs {
+  display: inline-block;
+  width: 200px;
+}
+
+.custom-input-field {
+  margin: 8px 0px;
+}
+
+
+.custom-add-operator-button {
+  display: block;
+  margin-top: 16px;
+}
+
+.flowchart-operator {
+  min-width: 140px;
+  width: auto;
+}
+
+.flowchart-example-container {
+  height: 200px;
+  border: 1px solid #BBB;
+  margin-bottom: 10px;
+}
+
+#chart_container {
+  width: 90%;
+  height: 800px;
+  overflow: hidden;
+  background: repeating-linear-gradient(45deg, #eee, #eee 10px, #e5e5e5 10px, #e5e5e5 20px);
+  border: 1px solid black;
+  margin: 0 auto;
+}
