@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- jQuery & jQuery UI are required -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Flowchart CSS and JS -->
+    <link rel="stylesheet" href="../jquery.flowchart.css" />
+    <script src="../jquery.flowchart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.panzoom/3.2.2/jquery.panzoom.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="pipeline.css" />
+  </head>
+
+  <body>
+    <h4>Flowchart</h4>
+    <div id="container">
+      <div class="draggable_operators custom-draggable-operators custom-inline">
+        <div class="draggable_operators_label">
+          Drag & Drop operators inside flowchart
+        </div>
+        <div class="draggable_operators_divs">
+          <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">1 input</div>
+          <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="1">1 output</div>
+          <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">1 input &amp; 1 output</div>
+          <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="2">1 in &amp; 2 out</div>
+          <div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="1">2 in &amp; 1 out</div>
+          <div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="2">2 in &amp; 2 out</div>
+        </div>
+        <!-- <div id="operators" class="draggable_operators_divs"></div> -->
+      </div>
+      <div id="chart_container" class="custom-inline custom-chart-container">
+        <div id="flowchartworkspace"></div>
+      </div>
+    </div>
+
+    <button class="delete_selected_button">Delete selected operator / link</button>
+    <div id="operator_properties" style="display: block;">
+      <label for="operator_title">Operator's title: </label><input id="operator_title" type="text" />
+    </div>
+    <div id="link_properties" style="display: block;">
+      <label for="link_color">Link's color: </label><input id="link_color" type="color" />
+    </div>
+    <button class="get_data" id="get_data">Get data</button>
+    <button class="set_data" id="set_data">Set data</button>
+    <button id="save_local">Save to local storage</button>
+    <button id="load_local">Load from local storage</button>
+    <div>
+      <textarea id="flowchart_data"></textarea>
+    </div>
+    <script src="pipeline.js"></script>
+  </body>
+</html>
