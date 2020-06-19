@@ -40,6 +40,10 @@
   margin-bottom: 10px;
 }
 
+.custom-operator-yellow {
+  background: yellow;
+}
+
 #chart_container {
   width: 90%;
   height: 800px;
