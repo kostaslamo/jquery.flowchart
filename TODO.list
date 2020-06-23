@@ -1,4 +1,5 @@
-- Create a <div id="operators-list"></div>
-- Create a form that will have the number of Operator Inputs, the number of Operator Outputs, the name of the operator and the name(s) of the Input(s)/Output(s)
-- Create an addd button to add the new Operator inside the operators-list
-- Then Drag&Drop the operators inside the container
+Get all Recipies for Building Pipelines from frontend object, script_params property contains input of recipe
+ns_automation.entities.filter(e => e.class === 'RecipeEntity')
+
+All Model Objects, containing history property with params property having the input values
+ns_automation.entities.filter(e => e.class === 'ModelEntity') For History

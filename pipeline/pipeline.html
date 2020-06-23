@@ -27,7 +27,76 @@
           Drag & Drop operators inside flowchart
         </div>
         <div class="draggable_operators_divs">
-          <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">1 input</div>
+          <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">
+            <div
+              class="entity-box selected"
+              style=""
+              data-entityid="f9050d06-95de-4783-ad99-e60405cf6baa"
+              data-class="RecipeEntity"
+              data-visibility="public"
+              data-created="1590098824328"
+              data-tags=""
+              data-history="1"
+            >
+              <div class="entity-box-upleft-menu">
+                <i class="material-icons entity-copy" data-tippy="" data-original-title="Create a copy of the entity"
+                  >library_add</i
+                >
+                <i class="material-icons entity-delete" data-tippy="" data-original-title="Delete entity">close</i>
+              </div>
+              <div class="head-container">
+                <div class="head" data-tippy="" data-original-title="Copy of Train Tacotron w/ domains">
+                  Copy of Train Tacotron w/ domains
+                </div>
+                <div class="entity-descr-container">
+                  <div
+                    class="entity-descr"
+                    data-tippy=""
+                    data-original-title="With support for domain inclusion/exclusion"
+                  >
+                    With support for domain inclusion/exclusion
+                  </div>
+                </div>
+                <div class="entity-id hideable" style="font-weight: 100; font-size: smaller; text-align: right;">
+                  f9050d06-95de-4783-ad99-e60405cf6baa
+                </div>
+              </div>
+              <div class="busy-indicator"></div>
+              <div class="meta hideable">
+                <span class="meta-item ">
+                  <i class="material-icons" style="" data-tippy="" data-original-title="Creation date">date_range</i
+                  >2020-05-22 | 1:07:04 AM</span
+                >
+              </div>
+              <div class="tags hideable"></div>
+              <div class="log myscroller hideable"></div>
+
+              <div class="tools hideable">
+                <i
+                  class="material-icons entity-invoke-method"
+                  data-method="run_on"
+                  data-tippy=""
+                  data-original-title="Run recipe on a dataset"
+                  >send</i
+                >
+                <i
+                  class="material-icons edit-entity-meta create_recipe_visibility"
+                  data-tippy=""
+                  data-original-title="Edit entity"
+                  >settings</i
+                >
+
+                <img
+                  class="material-icons open-ternsorboard"
+                  data-tensorboard=""
+                  style="float: left; cursor: hand;"
+                  src="/images/tensorflow.png"
+                  data-tippy=""
+                  data-original-title="Open TensorBoard to view progress"
+                />
+              </div>
+            </div>
+          </div>
           <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="1">1 output</div>
           <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">1 input &amp; 1 output</div>
           <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="2">1 in &amp; 2 out</div>
@@ -36,8 +105,10 @@
         </div>
         <!-- <div id="operators" class="draggable_operators_divs"></div> -->
       </div>
-      <div id="chart_container" class="custom-inline custom-chart-container">
-        <div id="flowchartworkspace"></div>
+      <div class="custom-inline">
+        <div id="chart_container" class="custom-chart-container">
+          <div id="flowchartworkspace"></div>
+        </div>
       </div>
     </div>
 
